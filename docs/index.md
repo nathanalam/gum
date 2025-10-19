@@ -90,6 +90,24 @@ You can start a GUM server directly from the command line.
         
         When you first run the GUM (below), your system may also prompt you to grant accessibility and screen recording permissions to the application. You may need to restart the process a few times as you grant these permissions.
 
+    === "LM Studio (local)"
+        Run an OpenAI-compatible server from LM Studio, then point GUM at it using the GUM env vars below (no SGLang required).
+
+        ```bash
+        # in LM Studio: start the local server (defaults to http://127.0.0.1:1234/v1)
+
+        # configure GUM to use LM Studio locally
+        > export MODEL_NAME="gemma-2-2b-it"       # or your chosen LM Studio model name
+        > export USER_NAME="Full Name"
+        > export GUM_LM_API_BASE="http://127.0.0.1:1234/v1"
+        > export GUM_LM_API_KEY="lm-studio"       # any non-empty string works by default
+        
+        # start GUM
+        > gum
+        ```
+
+        Note: If your local model is text-only, the Screen observer's vision calls may log transcription/summary failures; this is expected. Proposition generation still works using text chat completions.
+
     Start the GUM listening process up through the Terminal app:
 
     ```bash

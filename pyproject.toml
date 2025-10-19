@@ -28,7 +28,7 @@ dependencies = [
     "mkdocstrings>=0.24.0",
     "mkdocstrings-python>=1.7.0"
 ]
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 
 [project.scripts]
 gum = "gum.cli:cli"
