@@ -192,10 +192,10 @@ class Screen(Observer):
         self._pending_event: Optional[dict] = None
         self._debounce_handle: Optional[asyncio.TimerHandle] = None
         self.client = AsyncOpenAI(
-            # try the class, then the env for screen, then the env for gum
-            base_url=api_base or os.getenv("SCREEN_LM_API_BASE") or os.getenv("GUM_LM_API_BASE"), 
+            # try the class, then the env for screen, then the env for gum, then generic OpenAI-compatible
+            base_url=api_base or os.getenv("SCREEN_LM_API_BASE") or os.getenv("GUM_LM_API_BASE") or os.getenv("OPENAI_BASE_URL"), 
 
-            # try the class, then the env for screen, then the env for GUM, then none
+            # try the class, then the env for screen, then the env for GUM, then OpenAI, then none
             api_key=api_key or os.getenv("SCREEN_LM_API_KEY") or os.getenv("GUM_LM_API_KEY") or os.getenv("OPENAI_API_KEY") or "None"
         )
 

@@ -101,8 +101,10 @@ class gum:
         self.revise_prompt = revise_prompt or REVISE_PROMPT
         self.audit_prompt = audit_prompt or AUDIT_PROMPT
 
+        # Allow overriding via explicit arg, then GUM-specific env, then standard OpenAI-compatible env
+        # LM Studio exposes an OpenAI-compatible server at http://127.0.0.1:1234/v1 by default
         self.client = AsyncOpenAI(
-            base_url=api_base or os.getenv("GUM_LM_API_BASE"), 
+            base_url=api_base or os.getenv("GUM_LM_API_BASE") or os.getenv("OPENAI_BASE_URL"),
             api_key=api_key or os.getenv("GUM_LM_API_KEY") or os.getenv("OPENAI_API_KEY") or "None"
         )
 

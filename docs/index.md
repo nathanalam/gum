@@ -68,11 +68,20 @@ You can start a GUM server directly from the command line.
 
         Alternatively, we recommend using [SkyPilot](https://docs.skypilot.co/en/latest/docs/index.html) to serve and run your own models on the cloud. You can use the following [skypilot.yaml](https://github.com/GeneralUserModels/gum/blob/main/skypilot-tmp.yaml) file in the repo. You'll need to replace the HuggingFace token (HF_TOKEN) with your own. By default, we use Qwen 2.5 VL 32B (AWQ quanitized). A single H100 (80GB) should give you good enough throughput.
 
-    === "OpenAI"
-        You can authenticate by setting the `OPENAI_API_KEY` and `USER_NAME` env variables.
+    === "OpenAI / LM Studio (local)"
+        The client is OpenAI-compatible. You can point to a local LM Studio server by setting `OPENAI_BASE_URL` and an API key (any non-empty string works by default in LM Studio), along with `USER_NAME`.
 
         ```bash
-        > export OPENAI_API_KEY="your-api-key-here"
+        > export OPENAI_BASE_URL="http://127.0.0.1:1234/v1"
+        > export OPENAI_API_KEY="lm-studio"
+        > export USER_NAME="Full Name"
+        ```
+
+        Alternatively, for GUM-specific variables, you may set:
+
+        ```bash
+        > export GUM_LM_API_BASE="http://127.0.0.1:1234/v1"
+        > export GUM_LM_API_KEY="lm-studio"
         > export USER_NAME="Full Name"
         ```
 
